@@ -40,6 +40,7 @@
 	"type": "module",
 	"dependencies": {
 		"@xyflow/svelte": "^0.0.28",
-		"preline": "^2.0.2"
+		"preline": "^2.0.2",
+		"vite-plugin-golang-wasm": "^0.1.5"
 	}
 }
