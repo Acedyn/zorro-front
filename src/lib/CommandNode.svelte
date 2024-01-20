@@ -54,12 +54,12 @@
  
 <div class="card overflow-hidden text-gray-600 min-w-[500px]" bind:this={nodeContainer}>
     <div class="px-4 md:px-5 py-2" bind:this={headerContainer}>
-      <Handle type="target" position={Position.Left} style={`top: ${headerHandleOffset}px`} id="upstream"/>
+      <Handle type="target" position={Position.Left} style={`top: ${headerHandleOffset}px`} id="upstream" class="stream-handle"/>
       <h3 class="justify-center w-full font-semibold border-secondary-700 text-secondary-700 py-4 inline-flex items-center gap-x-2 border-b-2">
         <span class="material-symbols-outlined">home</span>
         <span>{$label}</span>
       </h3>
-      <Handle type="source" position={Position.Right} on:connect on:connectstart on:connectend style={`top: ${headerHandleOffset}px`} id="downstream"/>
+      <Handle type="source" position={Position.Right} style={`top: ${headerHandleOffset}px`} id="downstream" class="stream-handle"/>
     </div>
 
     <div class="flex flex-row p-4 justify-between gap-12">
@@ -76,7 +76,7 @@
       <div class="flex gap-2 flex-col">
         {#each $outputs as output, index}
           <div class="flex justify-between" bind:this={outputParameters[index]}>
-            <Handle type="target" position={Position.Right} style={`top: ${outputParameterOffset(index)}px`} id={`output-${output}`} class="parameter-handle parameter-handle-output"/>
+            <Handle type="source" position={Position.Right} style={`top: ${outputParameterOffset(index)}px`} id={`output-${output}`} class="parameter-handle parameter-handle-output"/>
             <label for="hs-basic-with-description" class="me-3">{output}</label>
           </div>
         {/each}
@@ -85,10 +85,10 @@
 
     <span class="flex flex-col bg-secondary-200 rounded-container-token">
       <div class="flex flex-col transition-all overflow-hidden max-h-96" bind:this={logsElement} style={logsStyle}>
-        <CodeBlock code={$logs.join("\n")} class="overflow-visible"></CodeBlock>
+        <CodeBlock code={$logs.join("\n")} class="overflow-visible bg-surface-600"></CodeBlock>
       </div>
 
-      <div class="text-secondary-800 flex gap-2 justify-between py-4 px-4 md:px-5">
+      <div class="text-secondary-700 flex gap-2 justify-between py-4 px-4 md:px-5">
         <span class="flex items-center">{$status}</span>
         <div class="flex gap-2">
           <button class="material-symbols-outlined p-1 rounded-full hover:bg-secondary-300 ease-out transition duration-500 bg-transparent" on:click={() => showCommmandLogs = !showCommmandLogs}>
@@ -149,5 +149,12 @@
     border-radius: 0 1rem 1rem 0;
     left: 1rem;
     transform: translate(0%, -50%);
+  }
+
+  :global(div.stream-handle) {
+    height: 1.5rem;
+    width: 1.5rem;
+    background: rgba(var(--color-secondary-200));
+    border: 2px solid rgb(var(--color-secondary-700) / var(--tw-text-opacity))
   }
 </style>

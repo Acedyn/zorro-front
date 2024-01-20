@@ -2,6 +2,7 @@
   import { writable } from 'svelte/store';
   import { SvelteFlow } from '@xyflow/svelte';
   import CommandNode from './CommandNode.svelte';
+  import SocketEdge from './SocketEdge.svelte';
  
   // 👇 this is important! You need to import the styles for Svelte Flow to work
   import '@xyflow/svelte/dist/style.css';
@@ -38,15 +39,21 @@
   const edges = writable([
     {
       id: '1-2',
-      type: 'default',
+      type: 'socket',
       source: '1',
       target: '2',
-      label: 'Edge Text'
+      label: 'Edge Text',
+      style: 'stroke-width: 4',
     }
   ]);
 
   const nodeTypes = {
     'command': CommandNode
+  };
+
+  const edgeTypes = {
+    'socket': SocketEdge,
+    'default': SocketEdge
   };
 </script>
  
@@ -54,12 +61,12 @@
 👇 By default, the Svelte Flow container has a height of 100%.
 This means that the parent container needs a height to render the flow.
 -->
-<div style:height="500px">
+<div style:height="100dvh">
   <SvelteFlow
     {nodes}
     {edges}
     {nodeTypes}
-    fitView
+    {edgeTypes}
   >
   </SvelteFlow>
 </div>
