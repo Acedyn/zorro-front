@@ -1,0 +1,3 @@
+[submodule "src/lib/protos"]
+	path = src/lib/protos
+	url = git@github.com:Acedyn/zorro-proto.git

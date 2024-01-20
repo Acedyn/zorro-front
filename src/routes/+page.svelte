@@ -1,5 +1,5 @@
 <script lang="ts">
-  import NodeGraph from '@/lib/NodeGraph.svelte';
+  import NodeGraph from '@/lib/components/NodeGraph.svelte';
 </script>
 
 <NodeGraph/>
