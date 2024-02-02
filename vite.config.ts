@@ -11,7 +11,9 @@ export default defineConfig({
   },
 	plugins: [
     sveltekit(),
-    goWasm(),
+    goWasm({
+      goBuildExtraArgs: ["-C", "./src/core"]
+    }),
   ],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
